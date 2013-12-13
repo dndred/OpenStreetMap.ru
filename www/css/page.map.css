@@ -238,10 +238,48 @@ a.leaflet-control-distance-active:hover { background-color: #ffa; }
 
 
 /* POI */
+div.poi_popup { margin-left: 10px; }
 div.poi_popup p                       { margin: 0; }
 div.poi_popup table td                { padding: 0.3em; }
-div.poi_popup p.poi_header            { padding-bottom: 1em; }
-div.poi_popup p.poi_header .poi_name  { margin-right: 1em; }
+div.poi_popup div.poi_header .poi_value { font-weight: bolder; }
+div.poi_popup .poi_key img { vertical-align: middle; }
+div.poi_popup div.poi_header {
+  padding-bottom: 1em;
+  padding-top: 1em;
+  text-align: center;
+}
+div.poi_popup div.poi_name {
+  background-color: #5F9FD7;
+  font-weight: bolder;
+  left: 0;
+  padding: 0.4em;
+  position: absolute;
+  text-align: center;
+  width: 1ch;
+  word-wrap: break-word;
+}
+div.poi_popup div.poi_operator {
+  background-color: #FFFFFF;
+  border: 1px solid #000000;
+  border-radius: 12px;
+  padding: 0.2em 0.7em;
+  position: absolute;
+  right: 40px;
+  top: -12px;
+}
+div.poi_popup div.poi_operator:after {
+  border-radius: 12px;
+  bottom: 0;
+  box-shadow: 0 0 7px #666666;
+  content: "";
+  display: block;
+  left: -1px;
+  position: absolute;
+  right: -1px;
+  top: -1px;
+  z-index: -1;
+}
+
 
 /*Доп. условия*/
 

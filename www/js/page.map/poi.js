@@ -120,9 +120,10 @@ osm.poi = {
     if (!(getdata == null)) {
       var operator;
       if (!(getdata.operator==null)) {
-        operator=$('<tr>').addClass('poi_operator')
-          .append($('<td>').text('Владелец: '))
-          .append($('<td>').text(getdata.operator).addClass('poi_value'))
+        operator=$('<div>').text(getdata.operator).addClass('poi_operator')
+        // operator=$('<tr>').addClass('poi_operator')
+          // .append($('<td>').text('Владелец: '))
+          // .append($('<td>').text(getdata.operator).addClass('poi_value'))
       }
       var brand;
       if (!(getdata.brand==null)) {
@@ -133,7 +134,7 @@ osm.poi = {
       var phone;
       if (!(getdata.phone==null)) {
         phone=$('<tr>').addClass('poi_phone')
-          .append($('<td>').text('Телефон: '))
+          .append($('<td>').html('<img src="/img/popup/phone.png">').addClass('poi_key'))
           .append($('<td>').addClass('poi_value')
             .append($('<a>').attr('href', 'tel:'+getdata.phone).text(getdata.phone))
           )
@@ -163,7 +164,7 @@ osm.poi = {
       var email;
       if (!(getdata.email==null)) {
         email=$('<tr>').addClass('poi_email')
-          .append($('<td>').text('E-mail: '))
+          .append($('<td>').html('<img src="/img/popup/email.png">').addClass('poi_key'))
           .append($('<td>').addClass('poi_value')
             .append($('<a>').attr('href', 'mailto:' + getdata.email).text(getdata.email))
           );
@@ -199,7 +200,8 @@ osm.poi = {
           .replace(/\s*;\s*/g, ' | ');
         getdata.opening_hours = getdata.opening_hours.charAt(0).toUpperCase() + getdata.opening_hours.substr(1);
         opening_hours=$('<tr>').addClass('poi_opening_hours')
-          .append($('<td>').text('Время работы: '))
+          .append($('<td>').html('<img src="/img/popup/opening_hours.png">').addClass('poi_key'))
+          // .append($('<td>').text('Время работы: '))
           .append($('<td>').text(getdata.opening_hours||osm.poi.opt.nulldisplay).addClass('poi_value'))
       }
 
@@ -229,17 +231,19 @@ osm.poi = {
       
 
       ret = $('<div>').addClass('poi_popup').attr('id',getdata.id)
-        .append($('<p>').addClass('poi_header')
-          .append($('<span>').text(getdata.class_ru).addClass('poi_name'))
-          .append($('<span>').text(getdata.name_ru||'').addClass('poi_value'))
+        .append($('<div>').text(getdata.class_ru.toLowerCase()).addClass('poi_name'))
+        .append(operator)
+        .append($('<div>').addClass('poi_header')
+          // .append($('<span>').text(getdata.class_ru).addClass('poi_name'))
+          .append($('<p>').text(getdata.name_ru||'').addClass('poi_value'))
         )
         .append($('<table>')
           .append(opening_hours)
           .append($('<tr>').addClass('poi_addr')
-            .append($('<td>').text('Адрес: '))
+            .append($('<td>').html('<img src="/img/popup/address.png">').addClass('poi_key'))
             .append($('<td>').text(getdata.addr ||"").addClass('poi_value'))
           )
-          .append(operator)
+          // .append(operator)
           .append(brand)
           .append(phone)
           .append(fax)
